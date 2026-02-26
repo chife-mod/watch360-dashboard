@@ -1,0 +1,68 @@
+/* ============================================
+   Watch360 Social Dashboard — Design System
+   Format: 1080 × 1350px (4:5 ratio)
+   Palette: Gold #A98155 / Charcoal #3A3935
+   Font: Lato (from Figma spec)
+   ============================================ */
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Design Tokens */
+:root {
+  /* Brand Colors */
+  --color-gold: #A98155;
+  --color-charcoal: #3A3935;
+  --color-sand: #F0EFEE;     /* Figma background */
+  --color-warm-white: #FAFAF8;
+  --color-muted: #9A9793;
+  --color-line: rgba(58, 57, 53, 0.12);
+
+  /* Typography — Lato (pixel-perfect Figma match) */
+  --font-family: 'Lato', sans-serif;
+
+  /* Font weights */
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-bold: 700;
+  --fw-black: 900;
+
+  /* Slide dimensions at 100% */
+  --slide-w: 1080px;
+  --slide-h: 1350px;
+
+  /* Spacing scale (px-based for fixed-size slides) */
+  --sp-xs:  8px;
+  --sp-sm:  16px;
+  --sp-md:  24px;
+  --sp-lg:  40px;
+  --sp-xl:  60px;
+  --sp-2xl: 100px;
+
+  /* Motion tokens (Phase 2 ready) */
+  --ease-precision: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 0.25s;
+  --duration-base: 0.45s;
+  --duration-slow: 0.75s;
+}
+
+html, body {
+  font-family: var(--font-family);
+  background: var(--color-charcoal);
+  color: var(--color-charcoal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px;
+  background: #1a1917;
+}

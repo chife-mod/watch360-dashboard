@@ -1,0 +1,210 @@
+/* ============================================
+   Slide2 — Brand Signals Slide
+   Node: 14424:167496
+   Two-tone: Sand top (#F0EFEE) + Dark panel (#3A3935)
+   ============================================ */
+
+.slide2-viewport {
+    position: relative;
+    width: var(--slide-w);
+    height: var(--slide-h);
+    flex-shrink: 0;
+    overflow: hidden;
+    background: var(--color-sand);
+}
+
+/* ── DARK BOTTOM PANEL ── */
+/* Figma: left=3, top=604, w=1077, h=746 → effectively bottom 746px */
+.slide2-dark-panel {
+    position: absolute;
+    left: 0;
+    top: 604px;
+    right: 0;
+    bottom: 0;
+    background: var(--color-charcoal);
+}
+
+/* ── LOGO (centered, top=120) ── */
+.slide2-logo {
+    position: absolute;
+    top: 120px;
+    left: 100px;
+    display: flex;
+    align-items: center;
+    height: 56px;
+}
+
+/* ── HEADLINE BLOCK (top=224, left=103) ── */
+.slide2-headline-block {
+    position: absolute;
+    top: 224px;
+    left: 103px;
+    width: 878px;
+}
+
+.slide2-date {
+    position: absolute;
+    top: 137px;
+    right: 100px;
+    font-family: var(--font-family);
+    font-weight: var(--fw-bold);
+    font-size: 26px;
+    letter-spacing: 0.12em;
+    color: var(--color-charcoal);
+    text-transform: uppercase;
+    text-align: right;
+    line-height: 1;
+}
+
+.slide2-headline {
+    font-family: var(--font-family);
+    font-weight: var(--fw-regular);
+    font-size: 108px;
+    line-height: 0.93;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.slide2-headline__gold {
+    color: var(--color-gold);
+}
+
+.slide2-headline__dark {
+    color: var(--color-charcoal);
+}
+
+/* ── STAT CARDS (top=472, centered) ── */
+.slide2-stats {
+    position: absolute;
+    top: 472px;
+    left: 100px;
+    right: 100px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.slide2-stat-card {
+    flex: 1;
+    background: #ffffff;
+    border-radius: 4px;
+    padding: 24px 48px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    text-align: center;
+    transition: box-shadow 0.4s ease;
+}
+
+.slide2-stat-card:hover {
+    box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.15);
+}
+
+/* First card has shadow (Figma: 0px 4px 4px rgba(0,0,0,0.25)) */
+.slide2-stat-card--shadow {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.slide2-stat-value {
+    font-family: var(--font-family);
+    font-weight: var(--fw-regular);
+    font-size: 122px;
+    line-height: 1;
+    color: var(--color-charcoal);
+    text-transform: uppercase;
+    width: 100%;
+    font-variant-numeric: tabular-nums;
+}
+
+.slide2-stat-label {
+    font-family: var(--font-family);
+    font-weight: var(--fw-regular);
+    font-size: 32px;
+    line-height: 1.2;
+    color: var(--color-charcoal);
+    width: 100%;
+}
+
+/* ── SIGNALS SECTION (top=756, left=100) ── */
+.slide2-signals {
+    position: absolute;
+    top: 756px;
+    left: 100px;
+    width: 877px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.slide2-signals-title {
+    font-family: var(--font-family);
+    font-weight: var(--fw-regular);
+    font-size: 49px;
+    line-height: 1;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.signals-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Signal row: [label] ——— [value] */
+.signal-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.signal-label {
+    font-family: var(--font-family);
+    font-weight: var(--fw-regular);
+    font-size: 35px;
+    line-height: 1.2;
+    color: #EEEDEC;
+    flex-shrink: 0;
+}
+
+.signal-line {
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.5);
+    min-width: 20px;
+}
+
+.signal-value {
+    font-family: var(--font-family);
+    font-weight: var(--fw-bold);
+    font-size: 35px;
+    line-height: 1.2;
+    color: #ffffff;
+    flex-shrink: 0;
+    text-align: right;
+}
+
+/* ── FOOTER CAPTION ── */
+.slide2-caption {
+    position: absolute;
+    top: 1200px;
+    left: 100px;
+    font-family: var(--font-family);
+    font-weight: var(--fw-regular);
+    font-size: 19px;
+    line-height: 1;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #ffffff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

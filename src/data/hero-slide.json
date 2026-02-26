@@ -1,0 +1,72 @@
+{
+    "meta": {
+        "title": "Watch Market Snapshot",
+        "period": "January 2026",
+        "generated_at": "2026-02-25",
+        "powered_by": "Watch360"
+    },
+    "overview": {
+        "new_watch_releases": 147,
+        "active_brands": 39
+    },
+    "insights": [
+        {
+            "id": "insight-01",
+            "emoji": null,
+            "label": "Dominant movement",
+            "value": "Automatic",
+            "detail": "68% of all releases"
+        },
+        {
+            "id": "insight-02",
+            "label": "Most active segment",
+            "value": "Sports / Diver",
+            "detail": "31 new references"
+        },
+        {
+            "id": "insight-03",
+            "label": "Top price corridor",
+            "value": "$2,000–$5,000",
+            "detail": "42% of launches"
+        },
+        {
+            "id": "insight-04",
+            "label": "Avg. case diameter",
+            "value": "41.3 mm",
+            "detail": "Stable vs. Dec 2025"
+        },
+        {
+            "id": "insight-05",
+            "label": "Material trend",
+            "value": "Grade 5 Titanium",
+            "detail": "Up 18% YoY"
+        }
+    ],
+    "top_brands": [
+        {
+            "name": "Rolex",
+            "releases": 12,
+            "segment": "Luxury"
+        },
+        {
+            "name": "Tudor",
+            "releases": 8,
+            "segment": "Mid-range"
+        },
+        {
+            "name": "Seiko",
+            "releases": 14,
+            "segment": "Accessible"
+        },
+        {
+            "name": "Omega",
+            "releases": 9,
+            "segment": "Luxury"
+        },
+        {
+            "name": "Longines",
+            "releases": 7,
+            "segment": "Mid-range"
+        }
+    ]
+}
