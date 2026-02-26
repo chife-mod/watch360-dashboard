@@ -75,20 +75,23 @@ body {
 /* ── Scale HUD ── */
 .scale-hud {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(26, 25, 23, 0.82);
+  background: rgba(26, 25, 23, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 40px;
-  padding: 10px 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  border-bottom: none;
+  border-radius: 16px 16px 0 0;
+  padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px));
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.4);
   z-index: 9999;
   user-select: none;
+  max-width: 100vw;
 }
 
 .scale-btn {
@@ -169,4 +172,64 @@ body {
   color: rgba(255, 255, 255, 0.7);
   min-width: 36px;
   text-align: right;
+}
+
+.save-pdf-btn {
+  background: transparent;
+  border: none;
+  color: #A98155;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.2s;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.save-pdf-btn:hover:not(:disabled) {
+  background: rgba(169, 129, 85, 0.15);
+  color: #c9a47b;
+}
+
+.save-pdf-btn:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.save-pdf-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Mobile (375px) ── */
+@media (max-width: 420px) {
+  .scale-hud {
+    gap: 8px;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px));
+    width: 100%;
+    border-radius: 0;
+    justify-content: center;
+  }
+
+  .scale-track {
+    width: 80px;
+  }
+
+  .scale-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+  }
+
+  .scale-label {
+    font-size: 11px;
+    min-width: 28px;
+  }
+
+  .save-pdf-btn {
+    font-size: 11px;
+    padding: 6px 8px;
+  }
 }
