@@ -3,6 +3,11 @@ import { motion, useInView } from 'framer-motion'
 import './Slide3.css'
 import LOGO_SYMBOL from '/assets/logos/watch360-symbol.svg'
 import LOGO_WORDMARK from '/assets/logos/watch360-wordmark.svg'
+import LOGO_SWATCH from '/assets/brand-logos/swatch.svg'
+import LOGO_HUBLOT from '/assets/brand-logos/hublot.svg'
+import LOGO_TAG_HEUER from '/assets/brand-logos/tag-heuer.svg'
+import LOGO_FREDERIQUE from '/assets/brand-logos/frederique-constant.svg'
+import LOGO_LV from '/assets/brand-logos/louis-vuitton.svg'
 
 /* ── Types ── */
 export interface BrandRow {
@@ -111,11 +116,11 @@ function BrandBar({
 
 /* ── Default data ── */
 const DEFAULT_BRANDS: BrandRow[] = [
-    { name: 'Swatch', count: 23, logo: '/assets/brand-logos/swatch.svg' },
-    { name: 'Hublot', count: 18, logo: '/assets/brand-logos/hublot.svg' },
-    { name: 'TAG Heuer', count: 10, logo: '/assets/brand-logos/tag-heuer.svg' },
-    { name: 'Frederique Constant', count: 8, logo: '/assets/brand-logos/frederique-constant.svg' },
-    { name: 'Louis Vuitton', count: 7, logo: '/assets/brand-logos/louis-vuitton.svg' },
+    { name: 'Swatch', count: 23, logo: LOGO_SWATCH },
+    { name: 'Hublot', count: 18, logo: LOGO_HUBLOT },
+    { name: 'TAG Heuer', count: 10, logo: LOGO_TAG_HEUER },
+    { name: 'Frederique Constant', count: 8, logo: LOGO_FREDERIQUE },
+    { name: 'Louis Vuitton', count: 7, logo: LOGO_LV },
 ]
 
 /* ── Component ── */
