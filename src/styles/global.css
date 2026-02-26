@@ -76,8 +76,7 @@ body {
 .scale-hud {
   position: fixed;
   bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
+  right: 24px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -120,11 +119,14 @@ body {
 
 .scale-track {
   width: 160px;
+  display: flex;
+  align-items: center;
 }
 
 .scale-slider {
   -webkit-appearance: none;
   appearance: none;
+  margin: 0;
   width: 100%;
   height: 3px;
   border-radius: 2px;

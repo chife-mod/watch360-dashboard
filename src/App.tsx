@@ -5,7 +5,7 @@ import { Slide2 } from './components/slides/Slide2'
 const MIN = 0.2
 const MAX = 1.0
 const STEP = 0.05
-const DEFAULT = 0.3
+const DEFAULT = 0.5
 
 function App() {
     const [scale, setScale] = useState(DEFAULT)
