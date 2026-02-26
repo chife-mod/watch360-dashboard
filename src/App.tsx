@@ -5,6 +5,7 @@ import './styles/global.css'
 import { Slide2 } from './components/slides/Slide2'
 import { Slide3 } from './components/slides/Slide3'
 import { Slide4 } from './components/slides/Slide4'
+import { Slide5 } from './components/slides/Slide5'
 import LOGO_BVLGARI from '/assets/brand-logos/bvlgari.svg'
 import LOGO_CITIZEN from '/assets/brand-logos/citizen.svg'
 import LOGO_ZENITH from '/assets/brand-logos/zenith.svg'
@@ -21,7 +22,7 @@ const SLIDE_H = 1350
 const GAP = 40
 const PEEK = 120   // px of next slide visible on the right
 
-const SLIDES_COUNT = 4
+const SLIDES_COUNT = 5
 
 /* ── Slide 4 data (Rank 6–10) ── */
 const SLIDE4_BRANDS = [
@@ -218,6 +219,14 @@ function App() {
                         style={{ width: SLIDE_W, height: SLIDE_H, flexShrink: 0 }}
                     >
                         <Slide4 caption="" />
+                    </div>
+
+                    {/* Slide 6 — Special Edition */}
+                    <div
+                        ref={el => { slideRefs.current[4] = el }}
+                        style={{ width: SLIDE_W, height: SLIDE_H, flexShrink: 0 }}
+                    >
+                        <Slide5 />
                     </div>
 
                     {/* End spacer so last slide can snap flush */}
