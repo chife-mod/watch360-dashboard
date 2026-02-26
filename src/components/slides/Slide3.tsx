@@ -22,6 +22,8 @@ interface Slide3Props {
     brands?: BrandRow[]
     hint?: string
     caption?: string
+    highlightFirst?: boolean  // gold first bar; default true
+    globalMax?: number        // override max for bar width (cross-slide proportion)
 }
 
 /* ── Easing ── */
@@ -57,10 +59,12 @@ function BrandBar({
     brand,
     index,
     maxCount,
+    highlightFirst,
 }: {
     brand: BrandRow
     index: number
     maxCount: number
+    highlightFirst: boolean
 }) {
     const pct = brand.count / maxCount
     const baseDelay = 0.4 + index * 0.12
@@ -98,7 +102,7 @@ function BrandBar({
 
                 <div className="s3-track">
                     <motion.div
-                        className={`s3-fill s3-fill--${index === 0 ? 'gold' : 'white'}`}
+                        className={`s3-fill s3-fill--${highlightFirst && index === 0 ? 'gold' : 'white'}`}
                         initial={{ width: 0 }}
                         animate={inView ? { width: `${pct * 100}%` } : {}}
                         transition={{
@@ -129,8 +133,11 @@ export function Slide3({
     brands = DEFAULT_BRANDS,
     hint = 'Top 5 shown. Next: Rank 6–10',
     caption = 'Powered by Watch360 : Data extracted from 147 references across 39 brands.',
+    highlightFirst = true,
+    globalMax,
 }: Slide3Props) {
-    const maxCount = brands[0]?.count ?? 1
+    // Use globalMax if provided (cross-slide proportions), else local max
+    const maxCount = globalMax ?? (brands[0]?.count ?? 1)
 
     return (
         <div className="s3-viewport">
@@ -178,29 +185,33 @@ export function Slide3({
             {/* ── Bar list (top=444) ── */}
             <div className="s3-bars">
                 {brands.map((b, i) => (
-                    <BrandBar key={b.name} brand={b} index={i} maxCount={maxCount} />
+                    <BrandBar key={b.name} brand={b} index={i} maxCount={maxCount} highlightFirst={highlightFirst} />
                 ))}
             </div>
 
-            {/* ── Hint ── */}
-            <motion.p
-                className="s3-hint"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 1.5, ease: 'easeOut' }}
-            >
-                {hint}
-            </motion.p>
+            {/* ── Hint (only if non-empty) ── */}
+            {hint && (
+                <motion.p
+                    className="s3-hint"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.6, delay: 1.5, ease: 'easeOut' }}
+                >
+                    {hint}
+                </motion.p>
+            )}
 
-            {/* ── Caption ── */}
-            <motion.p
-                className="s3-caption"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 1.7, ease: 'easeOut' }}
-            >
-                {caption}
-            </motion.p>
+            {/* ── Caption (only if non-empty) ── */}
+            {caption && (
+                <motion.p
+                    className="s3-caption"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.6, delay: 1.7, ease: 'easeOut' }}
+                >
+                    {caption}
+                </motion.p>
+            )}
         </div>
     )
 }

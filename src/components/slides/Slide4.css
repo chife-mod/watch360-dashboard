@@ -1,0 +1,168 @@
+/* ============================================
+   Slide4 — Price Range
+   Node: 14431:127307
+   No brand logos, 10 rows, thinner bars (12px),
+   font-size 32px, gap-between-rows 21px
+   ============================================ */
+
+.s4-viewport {
+    position: relative;
+    width: var(--slide-w);
+    height: var(--slide-h);
+    flex-shrink: 0;
+    overflow: hidden;
+    background: var(--color-sand);
+}
+
+/* ── DARK PANEL (top=405) ── */
+.s4-dark-panel {
+    position: absolute;
+    left: 0;
+    top: 405px;
+    right: 0;
+    bottom: 0;
+    background: var(--color-charcoal);
+}
+
+/* ── LOGO (top=120, left=100) ── */
+.s4-logo {
+    position: absolute;
+    top: 120px;
+    left: 100px;
+    display: flex;
+    align-items: center;
+    height: 56px;
+}
+
+/* ── DATE (top=137, right=100) ── */
+.s4-date {
+    position: absolute;
+    top: 137px;
+    right: 100px;
+    font-family: var(--font-family);
+    font-weight: var(--fw-bold);
+    font-size: 26px;
+    letter-spacing: 0.12em;
+    color: var(--color-charcoal);
+    text-transform: uppercase;
+    text-align: right;
+    line-height: 1;
+}
+
+/* ── HEADLINE BLOCK (top=213, left=100) ── */
+.s4-headline-block {
+    position: absolute;
+    top: 213px;
+    left: 100px;
+    width: 889px;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.s4-headline__gold {
+    font-family: var(--font-family);
+    font-weight: var(--fw-regular);
+    font-size: 108px;
+    line-height: 0.93;
+    letter-spacing: 0.01em;
+    color: var(--color-gold);
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.s4-headline__sub {
+    font-family: var(--font-family);
+    font-weight: var(--fw-regular);
+    font-size: 49px;
+    line-height: 1;
+    color: var(--color-charcoal);
+    text-transform: uppercase;
+}
+
+/* ── BAR LIST (top=444, left=100) ── */
+.s4-bars {
+    position: absolute;
+    top: 444px;
+    left: 100px;
+    width: 880px;
+    display: flex;
+    flex-direction: column;
+    gap: 21px;
+}
+
+/* ── SINGLE BAR ROW (no logo, just text + bar) ── */
+.s4-bar-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.s4-bar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--font-family);
+    font-weight: var(--fw-regular);
+    font-size: 32px;
+    line-height: 1;
+    text-transform: uppercase;
+    overflow: hidden;
+}
+
+.s4-label {
+    color: #ffffff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.s4-count {
+    color: #EEEDEC;
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+    padding-left: 16px;
+}
+
+/* ── BAR TRACK (12px tall) ── */
+.s4-track {
+    width: 100%;
+    height: 12px;
+    background: rgba(30, 29, 25, 0.75);
+    border-radius: 500px;
+    overflow: hidden;
+    position: relative;
+}
+
+.s4-fill {
+    height: 100%;
+    border-radius: 500px;
+    flex-shrink: 0;
+}
+
+.s4-fill--gold {
+    background: #D49E64;
+}
+
+.s4-fill--white {
+    background: #ffffff;
+}
+
+/* ── CAPTION (top=1200 — identical to other slides) ── */
+.s4-caption {
+    position: absolute;
+    top: 1200px;
+    left: 100px;
+    font-family: var(--font-family);
+    font-weight: var(--fw-regular);
+    font-size: 19px;
+    line-height: 1;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #ffffff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

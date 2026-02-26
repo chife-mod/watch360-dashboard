@@ -4,6 +4,7 @@ import { jsPDF } from 'jspdf'
 import './styles/global.css'
 import { Slide2 } from './components/slides/Slide2'
 import { Slide3 } from './components/slides/Slide3'
+import { Slide4 } from './components/slides/Slide4'
 import LOGO_BVLGARI from '/assets/brand-logos/bvlgari.svg'
 import LOGO_CITIZEN from '/assets/brand-logos/citizen.svg'
 import LOGO_ZENITH from '/assets/brand-logos/zenith.svg'
@@ -20,7 +21,7 @@ const SLIDE_H = 1350
 const GAP = 40
 const PEEK = 120   // px of next slide visible on the right
 
-const SLIDES_COUNT = 3
+const SLIDES_COUNT = 4
 
 /* ── Slide 4 data (Rank 6–10) ── */
 const SLIDE4_BRANDS = [
@@ -206,8 +207,17 @@ function App() {
                             subtitle="Rank 6–10 by Novelties"
                             brands={SLIDE4_BRANDS}
                             hint=""
-                            caption="Powered by Watch360 : Data extracted from 147 references across 39 brands."
+                            highlightFirst={false}
+                            globalMax={23}
                         />
+                    </div>
+
+                    {/* Slide 5 — Price Range */}
+                    <div
+                        ref={el => { slideRefs.current[3] = el }}
+                        style={{ width: SLIDE_W, height: SLIDE_H, flexShrink: 0 }}
+                    >
+                        <Slide4 caption="" />
                     </div>
 
                     {/* End spacer so last slide can snap flush */}
