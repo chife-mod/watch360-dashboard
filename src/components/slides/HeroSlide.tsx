@@ -1,11 +1,8 @@
 import { motion } from 'framer-motion'
 import type { HeroSlideData } from '../../types/dashboard'
 import './HeroSlide.css'
-
-// Figma-exact logo assets (downloaded from Figma node 14421:61189)
-// Symbol (checkmark icon) + Wordmark text
-const LOGO_SYMBOL = '/assets/logos/watch360-symbol.svg'
-const LOGO_WORDMARK = '/assets/logos/watch360-wordmark.svg'
+import LOGO_SYMBOL from '/assets/logos/watch360-symbol.svg'
+import LOGO_WORDMARK from '/assets/logos/watch360-wordmark.svg'
 
 interface HeroSlideProps {
     data: HeroSlideData

@@ -1,9 +1,8 @@
 import { useEffect, useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import './Slide2.css'
-
-const LOGO_SYMBOL = '/assets/logos/watch360-symbol.svg'
-const LOGO_WORDMARK = '/assets/logos/watch360-wordmark.svg'
+import LOGO_SYMBOL from '/assets/logos/watch360-symbol.svg'
+import LOGO_WORDMARK from '/assets/logos/watch360-wordmark.svg'
 
 /* ── Counter Hook ── */
 function useCounter(target: number, duration = 1.6, delay = 0) {
