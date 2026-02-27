@@ -329,6 +329,35 @@ body {
   cursor: not-allowed;
 }
 
+/* Animation Play button */
+.anim-btn {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border: 1px solid rgba(169, 129, 85, 0.4);
+  color: #A98155;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 6px 14px;
+  border-radius: 100px;
+  transition: all 0.2s;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.anim-btn:hover {
+  background: rgba(169, 129, 85, 0.15);
+  border-color: rgba(169, 129, 85, 0.7);
+  color: #c9a47b;
+  box-shadow: 0 0 12px rgba(169, 129, 85, 0.15);
+}
+
+.anim-btn:active {
+  transform: scale(0.96);
+}
+
 /* ── Mobile (375px) ── */
 @media (max-width: 420px) {
   .scale-hud {

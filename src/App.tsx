@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
 import html2canvas from 'html2canvas'
 import { jsPDF } from 'jspdf'
 import './styles/global.css'
@@ -25,6 +26,7 @@ const computeAutoScale = () =>
     ) * 0.97
 
 function App() {
+    const navigate = useNavigate()
     const [scale, setScale] = useState(computeAutoScale)
     const [activeIndex, setActiveIndex] = useState(0)
     const [isExporting, setIsExporting] = useState(false)
@@ -225,6 +227,13 @@ function App() {
                 <div className="hud-divider" />
                 <button className="save-pdf-btn" onClick={handleSavePdf} disabled={isExporting}>
                     {isExporting ? 'Saving...' : 'Save PDF'}
+                </button>
+                <div className="hud-divider" />
+                <button className="anim-btn" onClick={() => navigate('/animation')} title="Animated Presentation">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ marginRight: 6 }}>
+                        <path d="M3 2L12 7L3 12V2Z" fill="currentColor" />
+                    </svg>
+                    Play
                 </button>
             </div>
         </>

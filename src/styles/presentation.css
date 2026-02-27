@@ -1,0 +1,170 @@
+/* ============================================
+   Animated Presentation — Fullscreen Player
+   ============================================ */
+
+/* Viewport: fullscreen dark background */
+.pres-viewport {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #111110;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 0;
+}
+
+/* Stage: contains all slides stacked */
+.pres-stage {
+    position: relative;
+    flex-shrink: 0;
+}
+
+/* Each slide overlays on top of each other */
+.pres-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1080px;
+    height: 1350px;
+    will-change: opacity, transform;
+}
+
+/* ── Controls bar ── */
+.pres-controls {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(26, 25, 23, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 100px;
+    padding: 8px 16px;
+    z-index: 10000;
+    user-select: none;
+}
+
+.pres-controls-center {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pres-ctrl-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: transparent;
+    color: rgba(255, 255, 255, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pres-ctrl-btn:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.pres-ctrl-btn:active {
+    transform: scale(0.9);
+}
+
+/* Play button — gold accent */
+.pres-play-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid #A98155;
+    background: rgba(169, 129, 85, 0.15);
+    color: #A98155;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pres-play-btn:hover {
+    background: rgba(169, 129, 85, 0.3);
+    color: #c9a47b;
+    border-color: #c9a47b;
+    box-shadow: 0 0 16px rgba(169, 129, 85, 0.25);
+}
+
+.pres-play-btn:active {
+    transform: scale(0.92);
+}
+
+/* Back button */
+.pres-back-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: transparent;
+    color: rgba(255, 255, 255, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pres-back-btn:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.07);
+}
+
+/* Slide counter */
+.pres-slide-counter {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Lato', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.pres-slide-current {
+    color: #A98155;
+}
+
+.pres-slide-sep {
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.pres-slide-total {
+    color: rgba(255, 255, 255, 0.40);
+}
+
+/* ── Progress bar ── */
+.pres-progress-track {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.06);
+    z-index: 10001;
+}
+
+.pres-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #A98155, #D49E64);
+    border-radius: 0 2px 2px 0;
+    transition: width 0.05s linear;
+}
