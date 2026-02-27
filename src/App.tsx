@@ -2,29 +2,21 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 import html2canvas from 'html2canvas'
 import { jsPDF } from 'jspdf'
 import './styles/global.css'
-import { Slide2 } from './components/slides/Slide2'
-import { Slide3 } from './components/slides/Slide3'
-import { Slide4 } from './components/slides/Slide4'
-import { Slide5 } from './components/slides/Slide5'
-import LOGO_BVLGARI from '/assets/brand-logos/bvlgari.svg'
-import LOGO_CITIZEN from '/assets/brand-logos/citizen.svg'
-import LOGO_ZENITH from '/assets/brand-logos/zenith.svg'
-import LOGO_ALPINA from '/assets/brand-logos/alpina.svg'
-import LOGO_PEQUIGNET from '/assets/brand-logos/pequignet.svg'
+import { SlideV2_01 } from './components/slides/SlideV2_01'
+import { SlideV2_02 } from './components/slides/SlideV2_02'
+import { SlideV2_03 } from './components/slides/SlideV2_03'
+import { SlideV2_04 } from './components/slides/SlideV2_04'
+import { SlideV2_05 } from './components/slides/SlideV2_05'
+import { SlideV2_06 } from './components/slides/SlideV2_06'
+import { SlideV2_07 } from './components/slides/SlideV2_07'
+import { SlideV2_08 } from './components/slides/SlideV2_08'
+import { SlideV2_09 } from './components/slides/SlideV2_09'
 
 const SLIDE_W = 1080
 const SLIDE_H = 1350
-const GAP = 32      // px between slides
-const HUD_H = 72      // fixed bottom bar height
-const SLIDES_COUNT = 5
-
-const SLIDE4_BRANDS = [
-    { name: 'Bvlgari', count: 7, logo: LOGO_BVLGARI },
-    { name: 'Citizen', count: 7, logo: LOGO_CITIZEN },
-    { name: 'Zenith', count: 6, logo: LOGO_ZENITH },
-    { name: 'Alpina', count: 5, logo: LOGO_ALPINA },
-    { name: 'Pequignet', count: 5, logo: LOGO_PEQUIGNET },
-]
+const GAP = 32
+const HUD_H = 72
+const SLIDES_COUNT = 9
 
 const computeAutoScale = () =>
     Math.min(
@@ -37,14 +29,10 @@ function App() {
     const [activeIndex, setActiveIndex] = useState(0)
     const [isExporting, setIsExporting] = useState(false)
 
-    // Keep a ref in sync for use inside event handlers (avoids stale closure)
     const activeRef = useRef(0)
     const userAdjRef = useRef(false)
-
-    // Debounce token for wheel events
     const wheelTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-    /* ── Auto-fit scale on resize ── */
     useEffect(() => {
         const onResize = () => { if (!userAdjRef.current) setScale(computeAutoScale()) }
         window.addEventListener('resize', onResize)
@@ -59,13 +47,11 @@ function App() {
     const dec = () => { userAdjRef.current = true; setScale(s => clamp(s - STEP)) }
     const inc = () => { userAdjRef.current = true; setScale(s => clamp(s + STEP)) }
 
-    /* stride = visual width of one slide slot + gap */
     const slideStride = SLIDE_W * scale + GAP
 
-    const deckRef = useRef<HTMLDivElement>(null)
     const slideRefs = useRef<(HTMLDivElement | null)[]>([])
+    const deckRef = useRef<HTMLDivElement>(null)
 
-    /* ── Navigate to a specific slide ── */
     const scrollTo = useCallback((idx: number) => {
         const deck = deckRef.current
         if (!deck) return
@@ -73,10 +59,8 @@ function App() {
         deck.scrollTo({ left: clamped * slideStride, behavior: 'smooth' })
         setActiveIndex(clamped)
         activeRef.current = clamped
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [slideStride])
 
-    /* ── Sync active index while the user scrolls natively ── */
     const onScroll = () => {
         const deck = deckRef.current
         if (!deck) return
@@ -87,35 +71,21 @@ function App() {
         }
     }
 
-    /* ── Mouse wheel → snap one slide at a time (debounced) ──
-       Best practice: translate vertical delta into next/prev snap.
-       Debounce prevents double-firing on fast wheel notches.        */
     useEffect(() => {
         const deck = deckRef.current
         if (!deck) return
-
         const onWheel = (e: WheelEvent) => {
-            // Let natural horizontal trackpad swipes pass through
             if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return
-
             e.preventDefault()
-
-            // Ignore if already debouncing
             if (wheelTimer.current) return
-
             const dir = e.deltaY > 0 ? 1 : -1
-            const next = Math.max(0, Math.min(SLIDES_COUNT - 1, activeRef.current + dir))
-            scrollTo(next)
-
-            // Block further wheel events for the duration of the scroll animation
+            scrollTo(activeRef.current + dir)
             wheelTimer.current = setTimeout(() => { wheelTimer.current = null }, 550)
         }
-
         deck.addEventListener('wheel', onWheel, { passive: false })
         return () => deck.removeEventListener('wheel', onWheel)
     }, [scrollTo])
 
-    /* ── Keyboard ← → navigation ── */
     useEffect(() => {
         const onKey = (e: KeyboardEvent) => {
             if (e.key === 'ArrowRight') scrollTo(activeRef.current + 1)
@@ -125,31 +95,27 @@ function App() {
         return () => window.removeEventListener('keydown', onKey)
     }, [scrollTo])
 
-    /* ── PDF export ── */
     const handleSavePdf = async () => {
         const slideEl = slideRefs.current[activeIndex]
         if (!slideEl) return
         try {
             setIsExporting(true)
-            // Remove scale so html2canvas sees native 1080×1350
             const prev = slideEl.style.transform
             slideEl.style.transform = 'none'
             await new Promise(r => setTimeout(r, 200))
-
             const canvas = await html2canvas(slideEl, {
                 width: SLIDE_W, height: SLIDE_H,
                 scale: 2, useCORS: true,
                 backgroundColor: '#F0EFEE', logging: false,
             })
             slideEl.style.transform = prev
-
             const imgData = canvas.toDataURL('image/jpeg', 0.95)
             const pdf = new jsPDF({
                 orientation: 'portrait', unit: 'px',
                 format: [SLIDE_W, SLIDE_H], hotfixes: ['px_scaling'],
             })
             pdf.addImage(imgData, 'JPEG', 0, 0, SLIDE_W, SLIDE_H)
-            pdf.save(`watch360-slide-${activeIndex + 2}.pdf`)
+            pdf.save(`watch360-slide-${activeIndex + 1}.pdf`)
         } catch (err) {
             console.error(err)
         } finally {
@@ -158,29 +124,23 @@ function App() {
     }
 
     const slides = [
-        <Slide2 />,
-        <Slide3 />,
-        <Slide3
-            subtitle="Rank 6–10 by Novelties"
-            brands={SLIDE4_BRANDS}
-            hint=""
-            highlightFirst={false}
-            globalMax={23}
-        />,
-        <Slide4 caption="" />,
-        <Slide5 />,
+        <SlideV2_01 />,
+        <SlideV2_02 />,
+        <SlideV2_03 />,
+        <SlideV2_04 />,
+        <SlideV2_05 />,
+        <SlideV2_06 />,
+        <SlideV2_07 />,
+        <SlideV2_08 />,
+        <SlideV2_09 />,
     ]
 
     return (
         <>
-            {/* ── Horizontal filmstrip: CSS scroll-snap handles snapping,
-                no JS drag fighting it. Mouse wheel & keyboard snap 1 slide. ── */}
             <div
                 ref={deckRef}
                 className="slide-deck"
                 onScroll={onScroll}
-            /* No pointer drag — it fights scroll-snap and causes jitter.
-               Trackpad two-finger swipe + wheel + buttons cover all cases. */
             >
                 {slides.map((slide, i) => (
                     <div
@@ -204,7 +164,7 @@ function App() {
                 ))}
             </div>
 
-            {/* ── Pagination ── */}
+            {/* Pagination */}
             <div className="pagination">
                 <button
                     className="pagination-arrow"
@@ -222,7 +182,7 @@ function App() {
                         key={i}
                         className={`pagination-num${i === activeIndex ? ' pagination-num--active' : ''}`}
                         onClick={() => scrollTo(i)}
-                        aria-label={`Slide ${i + 2}`}
+                        aria-label={`Slide ${i + 1}`}
                     >
                         {String(i + 1).padStart(2, '0')}
                     </button>
@@ -240,10 +200,9 @@ function App() {
                 </button>
             </div>
 
-            {/* ── Bottom HUD ── */}
+            {/* Bottom HUD */}
             <div className="scale-hud">
                 <button className="scale-btn" onClick={dec} aria-label="Уменьшить">−</button>
-
                 <div className="scale-track">
                     <input
                         type="range"
@@ -256,17 +215,10 @@ function App() {
                         aria-label="Масштаб"
                     />
                 </div>
-
                 <button className="scale-btn" onClick={inc} aria-label="Увеличить">+</button>
                 <span className="scale-label">{Math.round(scale * 100)}%</span>
-
                 <div className="hud-divider" />
-
-                <button
-                    className="save-pdf-btn"
-                    onClick={handleSavePdf}
-                    disabled={isExporting}
-                >
+                <button className="save-pdf-btn" onClick={handleSavePdf} disabled={isExporting}>
                     {isExporting ? 'Saving...' : 'Save PDF'}
                 </button>
             </div>

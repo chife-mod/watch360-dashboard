@@ -1,0 +1,62 @@
+/* Slide 01 — Cover */
+
+/* JAN 2026 in charcoal — same font as v2-title, different color & position */
+.v2-title--charcoal {
+    color: #3A3935 !important;
+    top: 413px !important;
+    /* 213 + 2×108×0.93 ≈ 213+200 */
+}
+
+.v2-stat-row {
+    position: absolute;
+    top: 563px;
+    left: 100px;
+    width: 880px;
+    height: 294px;
+    display: flex;
+    background: #FFFFFF;
+    z-index: 2;
+}
+
+.v2-stat-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 48px;
+}
+
+.v2-stat-divider {
+    width: 1px;
+    height: 100%;
+    background: rgba(58, 57, 53, 0.12);
+    flex-shrink: 0;
+}
+
+.v2-stat-num {
+    font-family: 'Lato', sans-serif;
+    font-size: 120px;
+    font-weight: 300;
+    color: #3A3935;
+    line-height: 1;
+    margin: 0;
+}
+
+.v2-stat-lbl {
+    font-family: 'Lato', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: #3A3935;
+    margin: 16px 0 0;
+}
+
+.v2-cover-img {
+    position: absolute;
+    top: 658px;
+    left: 0;
+    width: 1080px;
+    height: 692px;
+    object-fit: cover;
+    object-position: center top;
+    z-index: 1;
+}

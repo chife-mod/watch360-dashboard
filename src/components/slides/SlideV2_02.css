@@ -1,0 +1,44 @@
+/* Slide 02 — All Releases (Semi-Donut) */
+.v2-donut-wrap {
+    position: absolute;
+    top: 405px;
+    left: 100px;
+    width: 880px;
+}
+
+.v2-donut-svg {
+    display: block;
+}
+
+.v2-donut-legend {
+    position: absolute;
+    top: 888px;
+    /* 405 + 440 + 43 ~ legend area */
+    left: 201px;
+    width: 675px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.v2-donut-legend__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 320px;
+}
+
+.v2-donut-legend__num {
+    font-family: 'Lato', sans-serif;
+    font-size: 96px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.v2-donut-legend__lbl {
+    font-family: 'Lato', sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    color: #FFFFFF;
+    text-transform: none;
+}

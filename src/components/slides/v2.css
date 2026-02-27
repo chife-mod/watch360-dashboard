@@ -1,0 +1,256 @@
+/* ===================================================
+   Watch360 V2 — Shared Slide Styles
+   Format: 1080 × 1350px (4:5) · All slides
+   =================================================== */
+
+/* ── Base Slide ── */
+.v2-slide {
+    position: relative;
+    width: 1080px;
+    height: 1350px;
+    overflow: hidden;
+    font-family: 'Lato', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── Two-panel layout ── */
+.v2-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1080px;
+    height: 405px;
+    background: #F0EFEE;
+}
+
+.v2-bottom {
+    position: absolute;
+    top: 405px;
+    left: 0;
+    width: 1080px;
+    height: 945px;
+    background: #3A3935;
+    overflow: hidden;
+}
+
+/* ── Header row (logo + url) ── */
+.v2-header {
+    position: absolute;
+    top: 120px;
+    left: 100px;
+    right: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.v2-header__logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 56px;
+}
+
+.v2-header__logo-symbol {
+    height: 56px;
+    width: auto;
+}
+
+.v2-header__logo-wordmark {
+    height: 30px;
+    width: auto;
+}
+
+.v2-header__url {
+    font-family: 'Lato', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 3.12px;
+    text-transform: uppercase;
+    color: #3A3935;
+    line-height: 1;
+    margin: 0;
+}
+
+/* ── Title block (gold, 2-line) ── */
+.v2-title {
+    position: absolute;
+    top: 213px;
+    left: 100px;
+    width: 889px;
+    font-family: 'Lato', sans-serif;
+    font-size: 108px;
+    font-weight: 900;
+    line-height: 0.93;
+    letter-spacing: 1.08px;
+    text-transform: uppercase;
+    color: #A98155;
+    margin: 0;
+    white-space: pre-line;
+}
+
+/* Subtitle under title (charcoal, smaller) */
+.v2-subtitle {
+    position: absolute;
+    left: 100px;
+    width: 880px;
+    font-family: 'Lato', sans-serif;
+    font-size: 38px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #3A3935;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* ── Bar chart rows (logo slides: 03, 04) ── */
+.v2-bars {
+    position: absolute;
+    top: 444px;
+    /* 405 (top panel) + 39px padding */
+    left: 100px;
+    width: 880px;
+}
+
+.v2-bar-row {
+    display: flex;
+    align-items: center;
+    width: 880px;
+    height: 96px;
+    margin-bottom: 14px;
+}
+
+.v2-bar-row:last-child {
+    margin-bottom: 0;
+}
+
+.v2-logo-box {
+    width: 96px;
+    height: 96px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.v2-logo-box img {
+    max-width: 96px;
+    max-height: 96px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.v2-bar-content {
+    flex: 1;
+    margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 4.5px;
+}
+
+.v2-bar-label-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    width: 100%;
+    height: 48px;
+}
+
+.v2-bar-label {
+    font-family: 'Lato', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.v2-bar-count {
+    font-family: 'Lato', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #EEEDEC;
+    margin: 0;
+    flex-shrink: 0;
+    text-align: right;
+}
+
+.v2-bar-track {
+    width: 100%;
+    height: 16px;
+    background: rgba(30, 29, 25, 0.75);
+    border-radius: 500px;
+    overflow: hidden;
+}
+
+.v2-bar-fill {
+    height: 100%;
+    border-radius: 500px;
+    background: #FFFFFF;
+}
+
+/* ── Simple bar rows (no logos: slides 05-09) ── */
+.v2-bars--simple {
+    position: absolute;
+    top: 454px;
+    /* 405 (top panel) + 49px padding */
+    left: 99px;
+    width: 880px;
+    display: flex;
+    flex-direction: column;
+    gap: 21px;
+}
+
+.v2-bar-row--simple {
+    width: 880px;
+    height: 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.v2-bar-label-row--simple {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 32px;
+}
+
+.v2-bar-label--simple {
+    font-family: 'Lato', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.v2-bar-count--simple {
+    font-family: 'Lato', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1;
+    color: #EEEDEC;
+    margin: 0;
+    text-align: right;
+}
+
+.v2-bar-track--simple {
+    width: 100%;
+    height: 12px;
+    background: rgba(30, 29, 25, 0.75);
+    border-radius: 500px;
+    overflow: hidden;
+}
