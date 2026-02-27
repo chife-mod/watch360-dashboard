@@ -317,8 +317,9 @@ export function AnimatedPresentation() {
             }
         }, `${pos}+=1.5`)
 
-        // Center number counts up
+        // Center number counts up — set visible first!
         const cObj = { val: 0 }
+        tl.set(centerNum, { opacity: 1 }, `${pos}+=0.6`)
         tl.to(cObj, {
             val: 147,
             duration: 1.6,
@@ -328,10 +329,11 @@ export function AnimatedPresentation() {
 
         tl.fromTo(centerSub, { opacity: 0 }, { opacity: 1, duration: 0.5 }, `${pos}+=1.2`)
 
-        // Legend numbers count up
+        // Legend numbers count up — set visible first!
         const legendTargets = [101, 46]
         legendNums.forEach((el, idx) => {
             const lObj = { val: 0 }
+            tl.set(el, { opacity: 1 }, `${pos}+=1.6`)
             tl.to(lObj, {
                 val: legendTargets[idx],
                 duration: 1.0,
